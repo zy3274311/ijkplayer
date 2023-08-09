@@ -1350,6 +1350,11 @@ retry:
             last_duration = vp_duration(is, lastvp, vp);
             delay = compute_target_delay(ffp, last_duration, is);
 
+            if (ffp->is->audio_stream < 0) {
+                float rate = ffp->pf_playback_rate;
+                delay = delay / rate;
+            }
+
             time= av_gettime_relative()/1000000.0;
             if (isnan(is->frame_timer) || time < is->frame_timer)
                 is->frame_timer = time;
