@@ -178,7 +178,7 @@ cd $FF_SOURCE
 #    echo 'reuse configure'
 #else
     echo "./configure $FF_CFG_FLAGS"
-    ./Configure $FF_CFG_FLAGS
+    ./configure $FF_CFG_FLAGS
 #        --extra-cflags="$FF_CFLAGS $FF_EXTRA_CFLAGS" \
 #        --extra-ldflags="$FF_EXTRA_LDFLAGS"
 #fi
