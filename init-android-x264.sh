@@ -32,7 +32,7 @@ function pull_fork()
     echo "== pull X264 fork $1 =="
     sh $TOOLS/pull-repo-ref.sh $IJK_X264_FORK android/contrib/x264-$1 ${IJK_X264_LOCAL_REPO}
     cd android/contrib/x264-$1
-    git checkout ${IJK_X264_COMMIT} -B ijkplayer
+    git checkout ${IJK_X264_COMMIT}
     cd -
 }
 
