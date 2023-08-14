@@ -15,6 +15,10 @@ OpenSSL
 ----------------------
 * Check openssl latest stable version
 
+X264
+----------------------
+* Check x264 latest stable version
+
 ijkplayer
 -----------------------
 * Update version.sh

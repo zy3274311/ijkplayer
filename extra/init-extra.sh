@@ -19,6 +19,7 @@ ln -s /opt/ijkplayer/ffmpeg
 ln -s /opt/ijkplayer/gas-preprocessor
 ln -s /opt/ijkplayer/libyuv
 ln -s /opt/ijkplayer/openssl
+ln -s /opt/ijkplayer/x264
 ln -s /opt/ijkplayer/android-ndk-profiler
 ln -s /opt/ijkplayer/ExoPlayer
 

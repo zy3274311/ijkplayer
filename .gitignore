@@ -3,6 +3,7 @@ build/
 ffmpeg-temp/
 android/ffmpeg-*
 android/openssl-*
+android/x264-*
 ios/ffmpeg-*
 ios/openssl-*
 extra
