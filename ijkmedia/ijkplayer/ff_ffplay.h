@@ -65,6 +65,7 @@ int       ffp_stop_l(FFPlayer *ffp);
 int       ffp_wait_stop_l(FFPlayer *ffp);
 
 /* all in milliseconds */
+int       ffp_set_play_range_l(FFPlayer *ffp, long start_time, long end_time);
 int       ffp_seek_to_l(FFPlayer *ffp, long msec);
 long      ffp_get_current_position_l(FFPlayer *ffp);
 long      ffp_get_duration_l(FFPlayer *ffp);

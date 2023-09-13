@@ -589,6 +589,7 @@ typedef struct FFPlayer {
     int show_status;
     int av_sync_type;
     int64_t start_time;
+    int64_t end_time;
     int64_t duration;
     int fast;
     int genpts;

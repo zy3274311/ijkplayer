@@ -601,6 +601,26 @@ int ijkmp_seek_to(IjkMediaPlayer *mp, long msec)
     return retval;
 }
 
+int ijkmp_set_play_range_l(IjkMediaPlayer *mp, long start_time, long end_time)
+{
+    assert(mp);
+    MP_RET_IF_FAILED(ikjmp_chkst_seek_l(mp->mp_state));
+    ffp_set_play_range_l(mp->ffplayer, start_time, end_time);
+    return 0;
+}
+
+int ijkmp_set_play_range(IjkMediaPlayer *mp, long start_time, long end_time)
+{
+    assert(mp);
+    MPTRACE("ijkmp_set_play_range(%ld, %ld)\n", start_time, end_time);
+    pthread_mutex_lock(&mp->mutex);
+    int retval = ijkmp_set_play_range_l(mp, start_time, end_time);
+    pthread_mutex_unlock(&mp->mutex);
+    MPTRACE("ijkmp_set_play_range(%ld, %ld)=%d\n", start_time, end_time, retval);
+
+    return retval;
+}
+
 int ijkmp_get_state(IjkMediaPlayer *mp)
 {
     return mp->mp_state;

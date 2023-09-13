@@ -4393,6 +4393,15 @@ int ffp_wait_stop_l(FFPlayer *ffp)
     return 0;
 }
 
+int ffp_set_play_range_l(FFPlayer *ffp, long start_time, long end_time){
+    assert(ffp);
+    if (!ffp)
+        return 0;
+    ffp->start_time = milliseconds_to_fftime(start_time);
+    ffp->end_time = milliseconds_to_fftime(end_time);
+    return 0;
+}
+
 int ffp_seek_to_l(FFPlayer *ffp, long msec)
 {
     assert(ffp);
