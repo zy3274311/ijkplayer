@@ -3518,6 +3518,16 @@ static int read_thread(void *arg)
         }
         pkt->flags = 0;
         ret = av_read_frame(ic, pkt);
+
+        int64_t start_time = ffp->start_time;
+        int64_t end_time = ffp->end_time;
+        int64_t current_time = pkt->pts;
+        if (start_time > 0 && end_time > 0 && end_time > start_time && current_time > end_time) {
+            d->finished = d->pkt_serial;
+            avcodec_flush_buffers(d->avctx);
+            ret = AVERROR_EOF;
+        }
+
         if (ret < 0) {
             int pb_eof = 0;
             int pb_error = 0;
