@@ -324,11 +324,15 @@ IjkMediaPlayer_setPlayRange(JNIEnv *env, jobject thiz, jlong start_time, jlong e
 {
     MPTRACE("%s\n", __func__);
     IjkMediaPlayer *mp = jni_get_media_player(env, thiz);
-    JNI_CHECK_GOTO(mp, env, "java/lang/IllegalStateException", "mpjni: setPlayRange: null mp", LABEL_RETURN);
+    JNI_CHECK_GOTO(mp, env, "java/lang/IllegalStateException", "mpjni: setPlayRange: null mp",
+                   LABEL_RETURN);
     ijkmp_set_play_range(mp, start_time, end_time);
-    ijkmp_seek_to(mp, start_time);
+    long retval = ijkmp_get_current_position(mp);
+    if (retval < start_time || retval > end_time) {
+        ijkmp_seek_to(mp, start_time);
+    }
 
-LABEL_RETURN:
+    LABEL_RETURN:
     ijkmp_dec_ref_p(&mp);
 }
 

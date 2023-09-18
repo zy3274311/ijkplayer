@@ -3480,10 +3480,10 @@ static int read_thread(void *arg)
             SDL_UnlockMutex(wait_mutex);
             continue;
         }
-	int64_t start_time = ffp->start_time;
+	    int64_t start_time = ffp->start_time;
         int64_t end_time = ffp->end_time;
         long current_time = milliseconds_to_fftime(ffp_get_current_position_l(ffp));
-        int reach_end = start_time > 0 && end_time > 0 && end_time > start_time && current_time > end_time;
+        int reach_end = start_time >= 0 && end_time > 0 && end_time > start_time && current_time > end_time;
         int completed_enable = (!is->paused || completed);
         int audio_enable = (!is->audio_st || (is->auddec.finished == is->audioq.serial && frame_queue_nb_remaining(&is->sampq) == 0));
         int video_enable = (!is->video_st || (is->viddec.finished == is->videoq.serial && frame_queue_nb_remaining(&is->pictq) == 0));
